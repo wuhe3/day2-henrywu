@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-
 public class MarsRoverTest {
     @Test
     public void should_initialize_mars_rover() {
@@ -25,7 +24,7 @@ public class MarsRoverTest {
         MarsRover rover = new MarsRover();
 
         // When
-        rover.executeCommand('L');
+        rover.executeCommands("L");
         String report = rover.printReport();
 
         // Then
@@ -38,8 +37,7 @@ public class MarsRoverTest {
         MarsRover rover = new MarsRover();
 
         // When
-        rover.executeCommand('R');
-        rover.executeCommand('L');
+        rover.executeCommands("RL");
 
         // Then
         assertEquals("0:0:N", rover.printReport());
@@ -51,9 +49,7 @@ public class MarsRoverTest {
         MarsRover rover = new MarsRover();
 
         // When
-        rover.executeCommand('R');
-        rover.executeCommand('R');
-        rover.executeCommand('L');
+        rover.executeCommands("RRL");
 
         // Then
         assertEquals("0:0:E", rover.printReport());
@@ -65,10 +61,7 @@ public class MarsRoverTest {
         MarsRover rover = new MarsRover();
 
         // When
-        rover.executeCommand('R');
-        rover.executeCommand('R');
-        rover.executeCommand('R');
-        rover.executeCommand('L');
+        rover.executeCommands("RRRL");
 
         // Then
         assertEquals("0:0:S", rover.printReport());
@@ -80,7 +73,7 @@ public class MarsRoverTest {
         MarsRover rover = new MarsRover();
 
         // When
-        rover.executeCommand('R');
+        rover.executeCommands("R");
         String report = rover.printReport();
 
         // Then
@@ -93,8 +86,7 @@ public class MarsRoverTest {
         MarsRover rover = new MarsRover();
 
         // When
-        rover.executeCommand('R');
-        rover.executeCommand('R');
+        rover.executeCommands("RR");
         String report = rover.printReport();
 
         // Then
@@ -107,9 +99,7 @@ public class MarsRoverTest {
         MarsRover rover = new MarsRover();
 
         // When
-        rover.executeCommand('R');
-        rover.executeCommand('R');
-        rover.executeCommand('R');
+        rover.executeCommands("RRR");
         String report = rover.printReport();
 
         // Then
@@ -122,10 +112,7 @@ public class MarsRoverTest {
         MarsRover rover = new MarsRover();
 
         // When
-        rover.executeCommand('R');
-        rover.executeCommand('R');
-        rover.executeCommand('R');
-        rover.executeCommand('R');
+        rover.executeCommands("RRRR");
         String report = rover.printReport();
 
         // Then
@@ -138,11 +125,10 @@ public class MarsRoverTest {
         MarsRover rover = new MarsRover();
 
         // When
-        rover.executeCommand('M');
+        rover.executeCommands("M");
 
         // Then
         assertEquals("0:1:N", rover.printReport());
-
     }
 
     @Test
@@ -151,8 +137,7 @@ public class MarsRoverTest {
         MarsRover rover = new MarsRover();
 
         // When
-        rover.executeCommand('L');
-        rover.executeCommand('M');
+        rover.executeCommands("LM");
 
         // Then
         assertEquals("-1:0:W", rover.printReport());
@@ -164,25 +149,22 @@ public class MarsRoverTest {
         MarsRover rover = new MarsRover();
 
         // When
-        rover.executeCommand('R');
-        rover.executeCommand('M');
+        rover.executeCommands("RRM");
 
         // Then
         assertEquals("0:-1:S", rover.printReport());
     }
 
     @Test
-    public void should_return_1_0_E_when_move_forward_given_0_0_W() {
+    public void should_return_minus_1_0_W_when_move_forward_given_0_0_W() {
         // Given
         MarsRover rover = new MarsRover();
 
         // When
-        rover.executeCommand('R');
-        rover.executeCommand('R');
-        rover.executeCommand('M');
+        rover.executeCommands("LM");
 
         // Then
-        assertEquals("1:0:E", rover.printReport());
+        assertEquals("-1:0:W", rover.printReport());
     }
 
     @Test
@@ -191,7 +173,7 @@ public class MarsRoverTest {
         MarsRover rover = new MarsRover();
 
         // When
-        rover.executeCommand('B');
+        rover.executeCommands("B");
 
         // Then
         assertEquals("0:-1:N", rover.printReport());
@@ -203,12 +185,10 @@ public class MarsRoverTest {
         MarsRover rover = new MarsRover();
 
         // When
-        rover.executeCommand('R');
-        rover.executeCommand('B');
+        rover.executeCommands("RB");
 
         // Then
         assertEquals("-1:0:E", rover.printReport());
-
     }
 
     @Test
@@ -217,9 +197,7 @@ public class MarsRoverTest {
         MarsRover rover = new MarsRover();
 
         // When
-        rover.executeCommand('R');
-        rover.executeCommand('R');
-        rover.executeCommand('B');
+        rover.executeCommands("RRB");
 
         // Then
         assertEquals("0:1:S", rover.printReport());
@@ -231,11 +209,33 @@ public class MarsRoverTest {
         MarsRover rover = new MarsRover();
 
         // When
-        rover.executeCommand('L');
-        rover.executeCommand('B');
+        rover.executeCommands("LB");
 
         // Then
         assertEquals("1:0:W", rover.printReport());
     }
 
+    @Test
+    public void should_return_0_2_N_when_execute_commands_given_0_0_N_and_M_M() {
+        // Given
+        MarsRover rover = new MarsRover();
+
+        // When
+        rover.executeCommands("MM");
+
+        // Then
+        assertEquals("0:2:N", rover.printReport());
+    }
+
+    @Test
+    public void should_return_0_0_N_when_execute_commands_given_0_0_N_and_M_B() {
+        // Given
+        MarsRover rover = new MarsRover();
+
+        // When
+        rover.executeCommands("MB");
+
+        // Then
+        assertEquals("0:0:N", rover.printReport());
+    }
 }
