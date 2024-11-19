@@ -27,6 +27,9 @@ public class MarsRover {
             case 'M':
                 moveForward();
                 break;
+            case 'B':
+                moveBackward();
+                break;
             default:
                 System.out.println("Invalid command");
         }
@@ -44,5 +47,16 @@ public class MarsRover {
         }
     }
 
+    public void moveBackward() {
+        if (direction == Direction.N) {
+            yAsis--;
+        } else if (direction == Direction.E) {
+            xAsis--;
+        } else if (direction == Direction.S) {
+            yAsis++;
+        } else {
+            xAsis++;
+        }
+    }
 
 }
