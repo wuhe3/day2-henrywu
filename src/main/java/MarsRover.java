@@ -16,7 +16,7 @@ public class MarsRover {
         printReport();
     }
 
-    private void updateDirection(char command) {
+    public void updateDirection(char command) {
         if (command == 'L') {
             direction = Direction.values()[(direction.ordinal() + 3) % 4];
         } else if (command == 'R') {

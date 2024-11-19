@@ -132,5 +132,57 @@ public class MarsRoverTest {
         assertEquals("0:0:N", report);
     }
 
+    @Test
+    public void should_return_0_1_N_when_move_forward_given_0_0_N() {
+        // Given
+        MarsRover rover = new MarsRover();
+
+        // When
+        rover.executeCommand('M');
+
+        // Then
+        assertEquals("0:1:N", rover.printReport());
+
+    }
+
+    @Test
+    public void should_return_minus_1_0_W_when_move_forward_given_0_0_E() {
+        // Given
+        MarsRover rover = new MarsRover();
+
+        // When
+        rover.executeCommand('L');
+        rover.executeCommand('M');
+
+        // Then
+        assertEquals("-1:0:W", rover.printReport());
+    }
+
+    @Test
+    public void should_return_0_minus_1_S_when_move_forward_given_0_0_S() {
+        // Given
+        MarsRover rover = new MarsRover();
+
+        // When
+        rover.executeCommand('R');
+        rover.executeCommand('M');
+
+        // Then
+        assertEquals("0:-1:S", rover.printReport());
+    }
+
+    @Test
+    public void should_return_1_0_E_when_move_forward_given_0_0_W() {
+        // Given
+        MarsRover rover = new MarsRover();
+
+        // When
+        rover.executeCommand('R');
+        rover.executeCommand('R');
+        rover.executeCommand('M');
+
+        // Then
+        assertEquals("1:0:E", rover.printReport());
+    }
 
 }
