@@ -12,10 +12,16 @@ public class MarsRover {
 
 
     public void executeCommand(char command) {
-        if (command == 'L') {
-            direction = 'W';
+        switch (command) {
+            case 'L':
+                direction = 'W';
+                break;
+            case 'R':
+                direction = 'E';
+                break;
+            default:
+                System.out.println("Invalid command");
         }
-
 
         printReport();
     }
