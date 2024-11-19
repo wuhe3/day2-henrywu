@@ -7,13 +7,16 @@ public class MarsRover {
     public int yAsis = 0;
     public Direction direction = Direction.N;
 
-
     public String printReport() {
         return String.format("%d:%d:%s", xAsis, yAsis, direction);
     }
 
-
     public void executeCommand(char command) {
+        updateDirection(command);
+        printReport();
+    }
+
+    private void updateDirection(char command) {
         if (command == 'L') {
             direction = Direction.values()[(direction.ordinal() + 3) % 4];
         } else if (command == 'R') {
@@ -21,8 +24,5 @@ public class MarsRover {
         } else {
             System.out.println("Invalid command");
         }
-
-        printReport();
     }
-
 }
