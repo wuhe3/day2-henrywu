@@ -14,15 +14,12 @@ public class MarsRover {
 
 
     public void executeCommand(char command) {
-        switch (command) {
-            case 'L':
-                direction = Direction.W;
-                break;
-            case 'R':
-                direction = Direction.E;
-                break;
-            default:
-                System.out.println("Invalid command");
+        if (command == 'L') {
+            direction = Direction.values()[(direction.ordinal() + 3) % 4];
+        } else if (command == 'R') {
+            direction = Direction.values()[(direction.ordinal() + 1) % 4];
+        } else {
+            System.out.println("Invalid command");
         }
 
         printReport();
