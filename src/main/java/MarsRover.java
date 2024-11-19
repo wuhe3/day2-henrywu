@@ -11,5 +11,15 @@ public class MarsRover {
     }
 
 
+    public void executeCommand(char command) {
+        if (command == 'L') {
+            direction = 'W';
+        }
+
+
+        printReport();
+    }
+
+
 
 }
