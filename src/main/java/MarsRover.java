@@ -11,9 +11,10 @@ public class MarsRover {
         return String.format("%d:%d:%s", xAsis, yAsis, direction);
     }
 
-    public void executeCommand(char command) {
-        updateDirection(command);
-        printReport();
+    public void executeCommands(String commands) {
+        for (char command : commands.toCharArray()) {
+            updateDirection(command);
+        }
     }
 
     public void updateDirection(char command) {
