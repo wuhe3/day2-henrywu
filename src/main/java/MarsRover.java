@@ -17,12 +17,31 @@ public class MarsRover {
     }
 
     public void updateDirection(char command) {
-        if (command == 'L') {
-            direction = Direction.values()[(direction.ordinal() + 3) % 4];
-        } else if (command == 'R') {
-            direction = Direction.values()[(direction.ordinal() + 1) % 4];
-        } else {
-            System.out.println("Invalid command");
+        switch (command) {
+            case 'L':
+                direction = Direction.values()[(direction.ordinal() + 3) % 4];
+                break;
+            case 'R':
+                direction = Direction.values()[(direction.ordinal() + 1) % 4];
+                break;
+            case 'M':
+                moveForward();
+                break;
+            default:
+                System.out.println("Invalid command");
         }
     }
+
+    public void moveForward() {
+        if (direction == Direction.N) {
+            yAsis++;
+        } else if (direction == Direction.E) {
+            xAsis++;
+        } else if (direction == Direction.S) {
+            yAsis--;
+        } else {
+            xAsis--;
+        }
+    }
+
 }
