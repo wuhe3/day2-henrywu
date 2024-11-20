@@ -3,9 +3,15 @@ public class MarsRover {
     public enum Direction {
         N, E, S, W
     }
-    public int xAsis = 0;
-    public int yAsis = 0;
-    public Direction direction = Direction.N;
+    public int xAsis;
+    public int yAsis;
+    public Direction direction;
+
+    public MarsRover() {
+        this.xAsis = 0;
+        this.yAsis = 0;
+        this.direction = Direction.N;
+    }
 
     public String printReport() {
         return String.format("%d:%d:%s", xAsis, yAsis, direction);
@@ -59,5 +65,4 @@ public class MarsRover {
             xAsis++;
         }
     }
-
 }
