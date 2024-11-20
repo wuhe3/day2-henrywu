@@ -3,9 +3,9 @@ public class MarsRover {
     public enum Direction {
         N, E, S, W
     }
-    public int xAsis;
-    public int yAsis;
-    public Direction direction;
+    private int xAsis;
+    private int yAsis;
+    private Direction direction;
 
     public MarsRover() {
         this.xAsis = 0;
@@ -37,32 +37,41 @@ public class MarsRover {
             case 'B':
                 moveBackward();
                 break;
-            default:
-                System.out.println("Invalid command");
         }
     }
 
     public void moveForward() {
-        if (direction == Direction.N) {
-            yAsis++;
-        } else if (direction == Direction.E) {
-            xAsis++;
-        } else if (direction == Direction.S) {
-            yAsis--;
-        } else {
-            xAsis--;
+        switch (direction) {
+            case N:
+                yAsis++;
+                break;
+            case E:
+                xAsis++;
+                break;
+            case S:
+                yAsis--;
+                break;
+            case W:
+                xAsis--;
+                break;
         }
     }
 
     public void moveBackward() {
-        if (direction == Direction.N) {
-            yAsis--;
-        } else if (direction == Direction.E) {
-            xAsis--;
-        } else if (direction == Direction.S) {
-            yAsis++;
-        } else {
-            xAsis++;
+        switch (direction) {
+            case N:
+                yAsis--;
+                break;
+            case E:
+                xAsis--;
+                break;
+            case S:
+                yAsis++;
+                break;
+            case W:
+                xAsis++;
+                break;
         }
     }
+
 }
